@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">LizzatResturent Lite</string>
+    <string name="enter_email">Email is Required!</string>
+    <string name="invalid_email">Invalid email pleas enter valid email</string>
+    <string name="enter_password">Password is Required!</string>
+    <string name="invalid_password">Invalid password pleas enter valid password</string>
+    <string name="enter_name">Name is Required!</string>
+    <string name="enter_role">Role is Required!</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="contact_to_developer">Contact to Developer</string>
+
+</resources>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/multi_color1"
+    android:layout_height="match_parent"
+    tools:context=".ui.AddFoodActivity">
+
+    <!-- res/layout/food_add_layout.xml -->
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Food Name -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextFoodName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Food Name"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Food Price -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextFoodPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:hint="Food Price"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Food Category -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextFoodCategory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Food Category"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Food Image URI -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextFoodImageUri"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Food Image URI"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Food Ingredients -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextFoodIngredients"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Food Ingredients"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Is Vegetarian Checkbox -->
+        <CheckBox
+            android:id="@+id/checkBoxIsVegetarian"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Is Vegetarian"/>
+
+        <!-- Is Available Checkbox -->
+        <CheckBox
+            android:id="@+id/checkBoxIsAvailable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Is Available"/>
+
+        <!-- Add Button -->
+        <Button
+            android:id="@+id/buttonAddFood"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add Food"/>
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

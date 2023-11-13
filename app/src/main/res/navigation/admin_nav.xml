@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/admin_nav"
+    app:startDestination="@id/homeFragment_nav">
+
+
+    <fragment
+        android:id="@+id/homeFragment_nav"
+        android:name="com.tufelmalik.lizzatresturentlite.ui.admin.fragment.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+
+        <action
+            android:id="@+id/action_homeFragment_nav_to_resturentFragment_nav"
+            app:enterAnim="@anim/fade_in_anim"
+            app:destination="@id/resturentFragment_nav" />
+        <action
+            android:id="@+id/action_homeFragment_nav_to_profileFragment_nav"
+            app:enterAnim="@anim/fade_in_anim"
+            app:destination="@id/profileFragment_nav" />
+    </fragment>
+    <fragment
+        android:id="@+id/resturentFragment_nav"
+        android:name="com.tufelmalik.lizzatresturentlite.ui.admin.fragment.ResturentFragment"
+        android:label="fragment_resturent"
+        tools:layout="@layout/fragment_resturent" >
+
+        <action
+            android:id="@+id/action_resturentFragment_nav_to_profileFragment_nav"
+            app:enterAnim="@anim/fade_in_anim"
+            app:destination="@id/profileFragment_nav" />
+        <action
+            android:id="@+id/action_resturentFragment_nav_to_homeFragment_nav"
+            app:enterAnim="@anim/fade_in_anim"
+            app:destination="@id/homeFragment_nav" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment_nav"
+        android:name="com.tufelmalik.lizzatresturentlite.ui.admin.fragment.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+
+        <action
+            android:id="@+id/action_profileFragment_nav_to_homeFragment_nav"
+            app:enterAnim="@anim/fade_in_anim"
+            app:destination="@id/homeFragment_nav" />
+        <action
+            android:id="@+id/action_profileFragment_nav_to_resturentFragment_nav"
+            app:enterAnim="@anim/fade_in_anim"
+            app:destination="@id/resturentFragment_nav" />
+    </fragment>
+</navigation>

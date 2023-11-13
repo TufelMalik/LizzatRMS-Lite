@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "258185324996",
+    "project_id": "lizzatresturent-lite-1c187",
+    "storage_bucket": "lizzatresturent-lite-1c187.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:258185324996:android:b8867c80e4460d33465c91",
+        "android_client_info": {
+          "package_name": "com.tufelmalik.lizzatresturentlite"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAANTG7IyzaDeMMou9iSYWuLMnuAipeBYQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
