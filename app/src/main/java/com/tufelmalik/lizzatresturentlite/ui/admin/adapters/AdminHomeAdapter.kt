@@ -40,9 +40,9 @@ class AdminHomeAdapter(private val itemList: List<AdminHomeItem>,val context :  
         holder.bind(itemList[position])
         holder.itemView.setOnClickListener {
             when(position){
-                0-> startActivityNow(StaffActivity(),"")
-                1-> startActivityNow(WaiterActivity(),"")
-                2-> startActivityNow(CookActivity(),"")
+                0-> startActivityNow(StaffActivity(),"admin")
+                1-> startActivityNow(WaiterActivity(),"admin")
+                2-> startActivityNow(CookActivity(),"admin")
                 3-> startActivityNow(AddFoodActivity(),"Add")
                 4-> startActivityNow(EditFoodActivity(),"Edit")
                 5-> startActivityNow(EditFoodActivity(),"Delete")

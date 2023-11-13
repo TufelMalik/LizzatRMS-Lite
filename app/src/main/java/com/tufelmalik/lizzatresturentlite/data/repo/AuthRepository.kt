@@ -4,7 +4,10 @@ import android.net.Uri
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
 import com.tufelmalik.lizzatresturentlite.classes.AppModule.provideFireStoreInstance
 import com.tufelmalik.lizzatresturentlite.classes.MyResult
@@ -29,7 +32,7 @@ class AuthRepository @Inject constructor(
         firebaseAuth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener {
                 if (it.isSuccessful) {
-                    user.userId = it.result.user!!.uid ?: ""
+                    user.userId = it.result.user!!.uid
                     saveUserDataInFirebase(user = user) { state ->
                         when (state) {
                             is MyResult.Success -> {
@@ -128,6 +131,30 @@ class AuthRepository @Inject constructor(
 
     override suspend fun logoutUser(result: () -> Unit) {
         TODO("Not yet implemented")
+    }
+
+    override suspend fun getAllUsersList(result: (MyResult<List<Users>>) -> Unit) {
+        val databaseRef =  db.reference.child(Utilities.FirebaseData.USER)
+        databaseRef.addValueEventListener(object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val userList = arrayListOf<Users>()
+                for(data in snapshot.children){
+                    val users = data.getValue(Users::class.java)
+                    if (users != null) {
+                        userList.add(users)
+                    }
+                }
+                result.invoke(
+                    MyResult.Success(userList)
+                )
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                result.invoke(
+                    MyResult.Error(error.message)
+                )
+            }
+        })
     }
 
 

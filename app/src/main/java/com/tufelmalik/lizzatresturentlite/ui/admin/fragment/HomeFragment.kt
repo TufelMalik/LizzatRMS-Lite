@@ -63,7 +63,6 @@ class HomeFragment : Fragment() {
     private fun setBanner() {
         imageSlider = binding.imageSlider
         viewModel.setHomeScreenBanner(imageSlider)
-
     }
 
 }

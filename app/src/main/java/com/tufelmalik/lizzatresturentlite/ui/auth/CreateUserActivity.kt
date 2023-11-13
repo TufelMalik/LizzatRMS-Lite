@@ -1,5 +1,6 @@
 package com.tufelmalik.lizzatresturentlite.ui.auth
 
+import android.app.ProgressDialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -10,7 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.tufelmalik.lizzatresturentlite.classes.AppModule
 import com.tufelmalik.lizzatresturentlite.classes.MyResult
-import com.tufelmalik.lizzatresturentlite.classes.Utilities
+import com.tufelmalik.lizzatresturentlite.classes.PreferenceManager
 import com.tufelmalik.lizzatresturentlite.classes.Utilities.showToast
 import com.tufelmalik.lizzatresturentlite.data.Users
 import com.tufelmalik.lizzatresturentlite.databinding.ActivityCreateUserBinding
@@ -73,12 +74,13 @@ class CreateUserActivity : AppCompatActivity() {
             userRole = binding.userRole.selectedItem.toString()
             observer()
             if (validateInput()) {
-                if(!userProfileUri.equals("")){
-                    val user = Users(FirebaseAuth.getInstance().uid,userName,userEmail,userPassword,userProfileUri.toString(),userRole)
-                    viewModel.registerAndSaveUserData(userEmail,userPassword, users = user)
-                }else{
-                    val user = Users(FirebaseAuth.getInstance().uid,userName,userEmail,userPassword,"profile image not selected yet",userRole)
-                    viewModel.registerAndSaveUserData(userEmail,userPassword, users = user)
+                PreferenceManager.setUserRole(this@CreateUserActivity,userRole)
+                if(::userProfileUri.isInitialized && !userProfileUri.toString().isEmpty()){
+                    val user = Users(FirebaseAuth.getInstance().uid, userName, userEmail, userPassword, userProfileUri.toString(), userRole)
+                    viewModel.registerAndSaveUserData(userEmail, userPassword, users = user)
+                } else {
+                    val user = Users(FirebaseAuth.getInstance().uid, userName, userEmail, userPassword, "profile image not selected yet", userRole)
+                    viewModel.registerAndSaveUserData(userEmail, userPassword, users = user)
                 }
             }
         }
@@ -86,24 +88,22 @@ class CreateUserActivity : AppCompatActivity() {
     }
 
     private fun observer() {
+        val dialog = ProgressDialog(this@CreateUserActivity)
+        dialog.setMessage("Pleas wait...")
+        dialog.setTitle("Creating your account")
         viewModel.registerResult.observe(this@CreateUserActivity) { state ->
             when (state) {
                 is MyResult.Loading -> {
-                    Utilities.showProgressDialog(
-                        this@CreateUserActivity,
-                        "Pleas wait...",
-                        "Creating your account",
-                        true
-                    )
+                 dialog.show()
                 }
 
                 is MyResult.Error -> {
-                    Utilities.showProgressDialog(this@CreateUserActivity, status = false)
+                    dialog.dismiss()
                     showToast(this@CreateUserActivity, state.errorMsg.toString())
                 }
 
                 is MyResult.Success -> {
-                    Utilities.showProgressDialog(this@CreateUserActivity, status = false)
+                    dialog.dismiss()
                     showToast(this@CreateUserActivity, state.data)
                     when (userRole) {
                         "Admin" -> startActivity(Intent(this, AdminActivity::class.java))

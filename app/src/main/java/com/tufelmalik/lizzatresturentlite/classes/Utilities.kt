@@ -9,6 +9,8 @@ import com.google.android.material.snackbar.Snackbar
 object Utilities  {
 
 
+
+
     fun showProgressDialog(context: Context,msg: String? = null,title:String?=null , status: Boolean){
         val dialog = ProgressDialog(context)
         dialog.setMessage(msg)
@@ -16,7 +18,7 @@ object Utilities  {
         if(status){
             dialog.show()
         }else{
-            dialog.dismiss()
+            dialog.hide()
         }
     }
 

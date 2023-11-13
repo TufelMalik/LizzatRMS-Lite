@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.auth.User
 import com.tufelmalik.lizzatresturentlite.classes.MyResult
 import com.tufelmalik.lizzatresturentlite.data.Users
 import com.tufelmalik.lizzatresturentlite.data.repo.AuthRepository
@@ -25,11 +26,21 @@ class AuthViewModel @Inject constructor(
     private val _loginResult = MutableLiveData<MyResult<String>>()
     val loginResult: LiveData<MyResult<String>>
         get() = _loginResult
+    private val _usersList = MutableLiveData<MyResult<List<Users>>>()
+    val usersList : LiveData<MyResult<List<Users>>>
+        get() = _usersList
 
+
+    fun getAllUsersList(){
+        viewModelScope.launch {
+           repo.getAllUsersList {
+               _usersList.value = it
+           }
+        }
+    }
 
     fun loginUser(email: String, pass: String) {
         _loginResult.value = MyResult.Loading
-        ;
         viewModelScope.launch {
             repo.loginUser(email, pass) {
                 _loginResult.value = it

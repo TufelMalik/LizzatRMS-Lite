@@ -41,6 +41,13 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    sourceSets {
+        getByName("main") {
+            res {
+                srcDirs("src\\main\\res", "src\\main\\res\\raw")
+            }
+        }
+    }
 }
 
 
@@ -90,6 +97,9 @@ dependencies {
 
     //ImageSlider
     implementation("com.github.denzcoskun:ImageSlideshow:0.1.0")
+
+    //Lootie Animation
+    implementation("com.airbnb.android:lottie:3.4.0")
 
     // Navigation Component
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.5")

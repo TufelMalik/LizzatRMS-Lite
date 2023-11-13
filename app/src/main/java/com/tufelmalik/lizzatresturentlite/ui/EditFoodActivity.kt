@@ -15,7 +15,9 @@ class EditFoodActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar!!.hide()
         key = intent.getStringExtra("key")
-        binding.txt1.text = key + " Food Activity"
+
+
+
 
 
     }

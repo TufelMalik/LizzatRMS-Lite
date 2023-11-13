@@ -3,24 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/multi_color1"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".ui.EditFoodActivity">
 
-    <TextView
-        android:id="@+id/txt1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="Edit Food Activity"
-        android:textSize="@dimen/_44sdp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5" />
-
+   <androidx.recyclerview.widget.RecyclerView
+       android:id="@+id/editFoodRecyclerView"
+       android:layout_width="match_parent"
+       android:background="@color/white"
+       android:layout_height="match_parent"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintHorizontal_bias="0.5"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toTopOf="parent"
+       app:layout_constraintVertical_bias="0.5"
+       tools:listitem="@layout/food_layout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

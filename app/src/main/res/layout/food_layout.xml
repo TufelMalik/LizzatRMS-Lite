@@ -1,21 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white"
-    android:backgroundTint="@color/white"
-    app:cardCornerRadius="@dimen/_20sdp"
-    app:cardElevation="@dimen/_30sdp">
+    android:layout_margin="@dimen/_10sdp"
+    android:layout_height="wrap_content">
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_210sdp"
-        android:layout_margin="@dimen/_10sdp"
-        android:background="@drawable/corner_black_border"
-        android:backgroundTint="#DFDDDD"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/_20sdp"
+        app:cardElevation="@dimen/_30sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -23,100 +19,118 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.5">
 
-        <ImageView
-            android:id="@+id/imgFoodLayout"
-            android:layout_width="@dimen/_88sdp"
-            android:layout_height="@dimen/_88sdp"
-            android:layout_marginStart="16dp"
-            android:background="@drawable/multi_color1"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.223" />
-
-        <TextView
-            android:id="@+id/txtFoodNameLayout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/_12sdp"
-            android:layout_marginTop="@dimen/_34sdp"
-            android:maxLength="16"
-            android:textStyle="bold"
-            android:text="TextViewbfjdsfbjfbfbdjsfdsj"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_19ssp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.151"
-            app:layout_constraintStart_toEndOf="@+id/imgFoodLayout"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/txtFoodPriceLayout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_12sdp"
-            android:maxLength="5"
-            android:text="20000"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_14ssp"
-            app:layout_constraintEnd_toEndOf="@+id/txtFoodNameLayout"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/txtFoodNameLayout"
-            app:layout_constraintTop_toBottomOf="@+id/txtFoodNameLayout" />
-
-        <View
-            android:id="@+id/view"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_2sdp"
-            android:background="@color/black"
+            android:layout_height="@dimen/_210sdp"
+            android:background="@drawable/corner_black_border"
+            android:backgroundTint="#DFDDDD"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtFoodPriceLayout" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.5">
+
+            <ImageView
+                android:id="@+id/imgFoodLayout"
+                android:layout_width="@dimen/_88sdp"
+                android:layout_height="@dimen/_88sdp"
+                android:layout_marginStart="16dp"
+                android:background="@drawable/multi_color1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.223" />
+
+            <TextView
+                android:id="@+id/txtFoodNameLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_34sdp"
+                android:layout_marginRight="@dimen/_8sdp"
+                android:maxLength="16"
+                android:text="TextViewbfjdsfbjfbfbdjsfdsj"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_19ssp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.151"
+                app:layout_constraintStart_toEndOf="@+id/imgFoodLayout"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txtFoodIsVegLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:maxLength="14"
+                android:text="Vegetarian"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14ssp"
+                app:layout_constraintEnd_toEndOf="@+id/txtFoodNameLayout"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/txtFoodNameLayout"
+                app:layout_constraintTop_toBottomOf="@+id/txtFoodNameLayout" />
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_2sdp"
+                android:background="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtFoodIsVegLayout" />
 
 
-        <Button
-            android:id="@+id/btnEditFoodLayout"
-            android:layout_width="@dimen/_120sdp"
-            android:layout_height="@dimen/_40sdp"
-            android:drawableLeft="@drawable/ic_edit"
-            android:backgroundTint="@color/green"
-            android:background="@drawable/corner"
-            android:text="EDIT"
-            android:textSize="@dimen/_14ssp"
-            android:paddingLeft="@dimen/_20sdp"
-            android:layout_margin="@dimen/_10sdp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view" />
+            <Button
+                android:id="@+id/btnEditFoodLayout"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_margin="@dimen/_10sdp"
+                android:background="@drawable/corner"
+                android:backgroundTint="@color/green"
+                android:drawableLeft="@drawable/ic_edit"
+                android:paddingLeft="@dimen/_20sdp"
+                android:text="EDIT"
+                android:textSize="@dimen/_14ssp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/view2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view" />
 
-        <View
-            android:layout_width="@dimen/_2sdp"
-            android:layout_height="@dimen/_45sdp"
-            android:background="@color/black"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btnDeleteFoodLayout"
-            app:layout_constraintStart_toEndOf="@+id/btnEditFoodLayout"
-            app:layout_constraintTop_toTopOf="@+id/view" />
+            <View
+                android:id="@+id/view2"
+                android:layout_width="@dimen/_3sdp"
+                android:layout_height="@dimen/_45sdp"
+                android:background="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/btnEditFoodLayout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view"
+                app:layout_constraintVertical_bias="0.705" />
 
-        <Button
-            android:id="@+id/btnDeleteFoodLayout"
-            android:layout_width="@dimen/_120sdp"
-            android:layout_height="@dimen/_40sdp"
-            android:textSize="@dimen/_14ssp"
-            android:layout_margin="@dimen/_10sdp"
-            android:drawableLeft="@drawable/ic_delete"
-            android:backgroundTint="@color/red"
-            android:background="@drawable/corner"
-            android:text="DELETE"
-            android:paddingLeft="@dimen/_20sdp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view" />
+            <Button
+                android:id="@+id/btnDeleteFoodLayout"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_margin="@dimen/_10sdp"
+                android:background="@drawable/corner"
+                android:backgroundTint="@color/red"
+                android:drawableLeft="@drawable/ic_delete"
+                android:paddingLeft="@dimen/_20sdp"
+                android:text="DELETE"
+                android:textSize="@dimen/_14ssp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/view2"
+                app:layout_constraintTop_toBottomOf="@+id/view" />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 
-
-</androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
