@@ -8,7 +8,6 @@ interface AuthRepoInterface {
     suspend fun registerUser(email : String ,password : String,user : Users, result : (MyResult<String>)-> Unit)
     suspend fun loginUser(userEmail : String , userPassword : String, result : (MyResult<String>)-> Unit)
     fun saveUserDataInFirebase(user : Users, result : (MyResult<String>)-> Unit)
-    suspend fun logoutUser(result : () -> Unit)
     suspend fun getAllUsersList( result: (MyResult<List<Users>>)  -> Unit)
 
 }

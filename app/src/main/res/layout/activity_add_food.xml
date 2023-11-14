@@ -3,102 +3,121 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/multi_color1"
     android:layout_height="match_parent"
+    android:background="@drawable/multi_color1"
     tools:context=".ui.AddFoodActivity">
 
-    <!-- res/layout/food_add_layout.xml -->
-
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="16dp">
 
-        <!-- Food Name -->
-        <com.google.android.material.textfield.TextInputLayout
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5">
+
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextFoodImageUri">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextFoodName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Food Name"/>
-        </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Food Price -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextFoodPrice"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
-                android:hint="Food Price"/>
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <!-- Food Category -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextFoodCategory"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Food Category"/>
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <!-- Food Image URI -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.google.android.material.textfield.TextInputEditText
+            <ImageView
                 android:id="@+id/editTextFoodImageUri"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_100sdp"
+                android:layout_gravity="center"
+                android:layout_marginTop="48dp"
+                android:layout_marginBottom="48dp"
+                android:background="@drawable/ic_add_food"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <!-- Food Name -->
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Food Image URI"/>
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginTop="@dimen/_10sdp">
 
-        <!-- Food Ingredients -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextFoodName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Food Name" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextFoodIngredients"
+            <!-- Food Price -->
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Food Ingredients"/>
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginTop="@dimen/_10sdp">
 
-        <!-- Is Vegetarian Checkbox -->
-        <CheckBox
-            android:id="@+id/checkBoxIsVegetarian"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Is Vegetarian"/>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextFoodPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Food Price" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Is Available Checkbox -->
-        <CheckBox
-            android:id="@+id/checkBoxIsAvailable"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Is Available"/>
 
-        <!-- Add Button -->
-        <Button
-            android:id="@+id/buttonAddFood"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Add Food"/>
+            <Spinner
+                android:id="@+id/spinnerFoodCategory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:padding="@dimen/_12sdp" />
 
-    </LinearLayout>
 
+            <!-- Food Ingredients -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextFoodIngredients"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Food Ingredients"
+                    android:lines="5"
+                    android:maxLines="15" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Is Vegetarian Checkbox -->
+            <CheckBox
+                android:id="@+id/checkBoxIsVegetarian"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:button="@drawable/is_checked_cb"
+                android:paddingLeft="@dimen/_10sdp"
+                android:text="None Vegetarian"
+                android:textSize="@dimen/_12ssp" />
+
+
+            <!-- Add Button -->
+            <Button
+                android:id="@+id/buttonAddFood"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:background="@drawable/corner"
+                android:backgroundTint="@color/royal_blue_dark"
+                android:text="Add Food" />
+
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

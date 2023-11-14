@@ -9,7 +9,8 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.tufelmalik.lizzatresturentlite.classes.AppModule
-import com.tufelmalik.lizzatresturentlite.classes.AppModule.provideCurrentUserID
+import com.tufelmalik.lizzatresturentlite.classes.FirebaseModule.provideCurrentUserID
+import com.tufelmalik.lizzatresturentlite.classes.FirebaseModule.provideFirebaseAuth
 import com.tufelmalik.lizzatresturentlite.classes.MyResult
 import com.tufelmalik.lizzatresturentlite.classes.Utilities
 import com.tufelmalik.lizzatresturentlite.data.Users
@@ -60,7 +61,7 @@ class SplashScreenActivity : AppCompatActivity() {
     private fun initViewModel() {
         val authRepository = AppModule.provideAuthRepository()
         val viewModelFactory =
-            AuthViewModelFactory(AppModule.provideFirebaseAuth(), authRepository)
+            AuthViewModelFactory(provideFirebaseAuth(), authRepository)
         viewModel = ViewModelProvider(this, viewModelFactory)[AuthViewModel::class.java]
         viewModel.getAllUsersList()
     }

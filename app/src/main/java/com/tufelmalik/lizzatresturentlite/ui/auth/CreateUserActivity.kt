@@ -4,12 +4,15 @@ import android.app.ProgressDialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.view.View
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.tufelmalik.lizzatresturentlite.classes.AppModule
+import com.tufelmalik.lizzatresturentlite.classes.FirebaseModule.provideFirebaseAuth
 import com.tufelmalik.lizzatresturentlite.classes.MyResult
 import com.tufelmalik.lizzatresturentlite.classes.PreferenceManager
 import com.tufelmalik.lizzatresturentlite.classes.Utilities.showToast
@@ -43,8 +46,8 @@ class CreateUserActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         val authRepository = AppModule.provideAuthRepository()
-        val viewModelFactory = AuthViewModelFactory(AppModule.provideFirebaseAuth(), authRepository)
-        viewModel = ViewModelProvider(this, viewModelFactory).get(AuthViewModel::class.java)
+        val viewModelFactory = AuthViewModelFactory(provideFirebaseAuth(), authRepository)
+        viewModel = ViewModelProvider(this, viewModelFactory)[AuthViewModel::class.java]
         supportActionBar!!.hide()
 
         binding.userRole.adapter = ArrayAdapter(
@@ -72,6 +75,24 @@ class CreateUserActivity : AppCompatActivity() {
             userPassword = binding.etRegPass.text.toString()
             userName = binding.etRegName.text.toString()
             userRole = binding.userRole.selectedItem.toString()
+            binding.userRole.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+                override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+                ) {
+                    val selectedCategory = parent?.getItemAtPosition(position).toString()
+                    binding.etUniqPasscode.isVisible = selectedCategory == "Admin"
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+                    TODO("Not yet implemented")
+                }
+
+
+            }
+
             observer()
             if (validateInput()) {
                 PreferenceManager.setUserRole(this@CreateUserActivity,userRole)

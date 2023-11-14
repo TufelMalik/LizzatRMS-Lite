@@ -8,8 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.tufelmalik.lizzatresturentlite.R
 import com.tufelmalik.lizzatresturentlite.classes.AppModule.provideAuthRepository
-import com.tufelmalik.lizzatresturentlite.classes.AppModule.provideCurrentUserID
-import com.tufelmalik.lizzatresturentlite.classes.AppModule.provideFirebaseAuth
+import com.tufelmalik.lizzatresturentlite.classes.FirebaseModule.provideCurrentUserID
+import com.tufelmalik.lizzatresturentlite.classes.FirebaseModule.provideFirebaseAuth
 import com.tufelmalik.lizzatresturentlite.classes.MyResult
 import com.tufelmalik.lizzatresturentlite.classes.Utilities.showToast
 import com.tufelmalik.lizzatresturentlite.data.Users

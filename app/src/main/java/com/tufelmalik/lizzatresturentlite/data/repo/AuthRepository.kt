@@ -9,7 +9,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
-import com.tufelmalik.lizzatresturentlite.classes.AppModule.provideFireStoreInstance
+import com.tufelmalik.lizzatresturentlite.classes.FirebaseModule.provideFirebaseStorage
 import com.tufelmalik.lizzatresturentlite.classes.MyResult
 import com.tufelmalik.lizzatresturentlite.classes.Utilities
 import com.tufelmalik.lizzatresturentlite.data.Users
@@ -21,7 +21,7 @@ class AuthRepository @Inject constructor(
     private var db: FirebaseDatabase
 ) : AuthRepoInterface {
 
-    var storage: FirebaseStorage = provideFireStoreInstance()
+    private var storage: FirebaseStorage = provideFirebaseStorage()
 
     override suspend fun registerUser(
         email: String,
@@ -129,9 +129,6 @@ class AuthRepository @Inject constructor(
 
     }
 
-    override suspend fun logoutUser(result: () -> Unit) {
-        TODO("Not yet implemented")
-    }
 
     override suspend fun getAllUsersList(result: (MyResult<List<Users>>) -> Unit) {
         val databaseRef =  db.reference.child(Utilities.FirebaseData.USER)

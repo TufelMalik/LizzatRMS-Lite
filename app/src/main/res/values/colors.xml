@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="main_color">#FF8A65</color>
-    <color name="dark_main_color">#FF5722</color>
+<!--    <color name="main_color">#FF8A65</color>-->
+<!--    <color name="dark_main_color">#FF5722</color>-->
+<!--    -->
+<!--    <color name="main_color">#BF4D28</color>-->
+<!--    <color name="dark_main_color">#3E4095</color>-->
+
+    <color name="main_color">#6BBE45</color>
+    <color name="dark_main_color">#FF8A65</color>
+
     <color name="purple_200">#3333FF</color>
     <color name="purple_500">#3333FF</color>
     <color name="purple_700">#0A1C78</color>
