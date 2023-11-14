@@ -1,6 +1,6 @@
 package com.tufelmalik.lizzatresturentlite.ui.auth
 
-import android.app.Activity
+import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -12,6 +12,7 @@ import com.tufelmalik.lizzatresturentlite.classes.AppModule.provideCurrentUserID
 import com.tufelmalik.lizzatresturentlite.classes.AppModule.provideFirebaseAuth
 import com.tufelmalik.lizzatresturentlite.classes.MyResult
 import com.tufelmalik.lizzatresturentlite.classes.Utilities.showToast
+import com.tufelmalik.lizzatresturentlite.data.Users
 import com.tufelmalik.lizzatresturentlite.databinding.ActivityLoginActivityBinding
 import com.tufelmalik.lizzatresturentlite.ui.admin.activity.AdminActivity
 import com.tufelmalik.lizzatresturentlite.ui.cook.CookActivity
@@ -20,14 +21,12 @@ import com.tufelmalik.lizzatresturentlite.ui.viewodel.viewmodel_feectory.AuthVie
 import com.tufelmalik.lizzatresturentlite.ui.waiter.WaiterActivity
 import dagger.hilt.android.AndroidEntryPoint
 
-
 @AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
     private val TAG = "LoginActivity"
     private val binding: ActivityLoginActivityBinding by lazy {
         ActivityLoginActivityBinding.inflate(layoutInflater)
     }
-    private var userRole : String? = null
     private lateinit var userEmail: String
     private lateinit var userPassword: String
     private lateinit var viewModel: AuthViewModel
@@ -35,85 +34,91 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        val authRepository = provideAuthRepository()
-        val viewModelFactory = AuthViewModelFactory(provideFirebaseAuth(), authRepository)
-        viewModel = ViewModelProvider(this, viewModelFactory).get(AuthViewModel::class.java)
         supportActionBar!!.hide()
-        viewModel.getAllUsersList()
 
 
-        observer()
+        initViewModel()
+        observeLoginResult()
+
         binding.btnLogin.setOnClickListener {
             userEmail = binding.etEmailLogin.text.toString()
             userPassword = binding.etPassLogin.text.toString()
             if (validateInput()) {
                 viewModel.loginUser(userEmail, userPassword)
-            }else{
-                showToast(this@LoginActivity,"Email & password required!")
+            } else {
+                showToast(this@LoginActivity, "Email & password required!")
             }
         }
 
         binding.txtGotoReg.setOnClickListener {
-            startActivity(
-                Intent(
-                    this,
-                    CreateUserActivity::class.java
-                )
-            )
-        }
-
-    }
-
-
-
-    private fun checkUserIsAuthed() {
-        viewModel.usersList.observe(this@LoginActivity) { state ->
-            when (state) {
-                is MyResult.Error -> showToast(this@LoginActivity, "Something went wrong!!")
-
-                MyResult.Loading -> TODO() // Handle Loading if needed
-
-                is MyResult.Success -> {
-                    val usersList = state.data
-                    Log.d(TAG, "Users list : $usersList")
-
-                    if (provideCurrentUserID() != null) {
-                        for (user in usersList) {
-                            if (user.userId == provideCurrentUserID()) {
-                                when (user.userRole) {
-                                    "Waiter" -> startActivityNow(WaiterActivity())
-                                    "Cook" -> startActivityNow(CookActivity())
-                                    "Admin" -> startActivityNow(AdminActivity())
-                                    else -> {
-                                        // Handle other roles or scenarios if needed
-                                    }
-                                }
-                                return@observe // Break out of the loop once a match is found
-                            }
-                        }
-                    }
-                }
-
-                is MyResult.Unspecified -> TODO()
-            }
+            startActivity(Intent(this, CreateUserActivity::class.java))
         }
     }
 
+    private fun initViewModel() {
+        val authRepository = provideAuthRepository()
+        val viewModelFactory = AuthViewModelFactory(provideFirebaseAuth(), authRepository)
+        viewModel = ViewModelProvider(this, viewModelFactory)[AuthViewModel::class.java]
+        viewModel.getAllUsersList()
+    }
 
-    private fun observer() {
+    private fun observeLoginResult() {
         viewModel.loginResult.observe(this@LoginActivity) { state ->
             when (state) {
                 is MyResult.Error -> showToast(this@LoginActivity, "Something went wrong!!")
-                MyResult.Loading -> TODO() // Handle Loading if needed
                 is MyResult.Success -> {
-                    startActivity(Intent(this@LoginActivity,AdminActivity::class.java))
+                    val dialog = ProgressDialog(this@LoginActivity)
+                    dialog.setMessage("Pleas wait...")
+                    dialog.setTitle("Login")
+                    dialog.show()
+                    observeUserList()
+                    dialog.dismiss()
+                    dialog.hide()
                 }
 
-                is MyResult.Unspecified -> TODO()
+                else -> {}
+            }
+        }
+
+    }
+
+    private fun observeUserList() {
+        viewModel.usersList.observe(this@LoginActivity) { userListState ->
+            when (userListState) {
+                is MyResult.Success -> {
+                    val usersList = userListState.data
+                    checkUserRoleAndStartActivity(usersList)
+                }
+
+                is MyResult.Error -> showToast(this@LoginActivity, "Failed to retrieve user list")
+                else -> {}
+            }
+        }
+
+    }
+
+
+    private fun checkUserRoleAndStartActivity(usersList: List<Users>) {
+        val currentUserID = provideCurrentUserID()
+        if (currentUserID != null) {
+            for (user in usersList) {
+                if (user.userId == currentUserID) {
+                    when (user.userRole) {
+                        "Waiter" -> startActivityNow(WaiterActivity::class.java)
+                        "Cook" -> startActivityNow(CookActivity::class.java)
+                        "Admin" -> startActivityNow(AdminActivity::class.java)
+                        else -> {}
+                    }
+                }
+                Log.d(TAG, "Users list : \n\n .. ${usersList} \n\n..\n\n")
             }
         }
     }
 
+    private fun startActivityNow(activityClass: Class<*>) {
+        startActivity(Intent(this@LoginActivity, activityClass))
+        finish()
+    }
 
     private fun validateInput(): Boolean {
         var isValid = true
@@ -133,22 +138,8 @@ class LoginActivity : AppCompatActivity() {
     }
 
 
-
-
     override fun onBackPressed() {
         super.onBackPressed()
         finishAffinity()
-        finish()
     }
-
-    override fun onStart() {
-        super.onStart()
-        viewModel.getAllUsersList()
-        checkUserIsAuthed()
-    }
-
-    private fun startActivityNow(activity: Activity) {
-        startActivity(Intent(this@LoginActivity, activity::class.java))
-    }
-
 }
