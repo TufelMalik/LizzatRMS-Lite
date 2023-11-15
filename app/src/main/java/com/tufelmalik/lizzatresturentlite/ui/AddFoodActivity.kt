@@ -30,7 +30,7 @@ class AddFoodActivity : AppCompatActivity() {
     private var foodName: String? = null
     private var foodPrice: String? = null
     private var foodCategory: String? = null
-    private var isVegetarian: Boolean? = null
+    private var isVegetarian: Boolean? = false
     private var foodIngredients: String? = null
     private lateinit var viewModel: FoodViewModel
     private val foodCategories = arrayOf(
@@ -72,11 +72,10 @@ class AddFoodActivity : AppCompatActivity() {
         }
 
         binding.checkBoxIsVegetarian.setOnCheckedChangeListener { _, isChecked ->
+            isVegetarian = isChecked
             if (isChecked) {
-                isVegetarian = true
                 binding.checkBoxIsVegetarian.text = getString(R.string.vegetarian)
             } else {
-                isVegetarian = false
                 binding.checkBoxIsVegetarian.text = getString(R.string.none_vegetarian)
             }
         }
@@ -146,7 +145,8 @@ class AddFoodActivity : AppCompatActivity() {
 
         if (foodIngredients.isNullOrBlank()) {
             isValid = false
-        } else {
+        }
+        if(foodIngredients!!.isNotEmpty()){
             foodIngredients = "\nIngredients not specified by Restaurant."
         }
         return isValid

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_margin="@dimen/_10sdp"
+    android:background="@color/white"
     android:layout_height="wrap_content">
 
 
@@ -11,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="@dimen/_20sdp"
-        app:cardElevation="@dimen/_30sdp"
+        app:cardElevation="@dimen/_60sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -21,9 +22,9 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_210sdp"
+            android:layout_height="@dimen/_170sdp"
             android:background="@drawable/corner_black_border"
-            android:backgroundTint="#DFDDDD"
+            android:backgroundTint="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -33,21 +34,25 @@
 
             <ImageView
                 android:id="@+id/imgFoodLayout"
-                android:layout_width="@dimen/_88sdp"
-                android:layout_height="@dimen/_88sdp"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_100sdp"
                 android:layout_marginStart="16dp"
+                android:layout_marginEnd="27dp"
                 android:background="@drawable/multi_color1"
+                android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/constraintLayout"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.223" />
+
 
             <TextView
                 android:id="@+id/txtFoodNameLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/_12sdp"
-                android:layout_marginTop="@dimen/_34sdp"
+                android:layout_marginTop="28dp"
                 android:layout_marginRight="@dimen/_8sdp"
                 android:maxLength="16"
                 android:text="TextViewbfjdsfbjfbfbdjsfdsj"
@@ -55,79 +60,88 @@
                 android:textSize="@dimen/_19ssp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.151"
+                app:layout_constraintHorizontal_bias="0.191"
                 app:layout_constraintStart_toEndOf="@+id/imgFoodLayout"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/txtFoodIsVegLayout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_12sdp"
-                android:maxLength="14"
-                android:text="Vegetarian"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_14ssp"
-                app:layout_constraintEnd_toEndOf="@+id/txtFoodNameLayout"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/txtFoodNameLayout"
-                app:layout_constraintTop_toBottomOf="@+id/txtFoodNameLayout" />
-
-            <View
-                android:id="@+id/view"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_2sdp"
-                android:background="@color/black"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginLeft="@dimen/_120sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:background="@drawable/corner"
+                android:backgroundTint="@color/main_color"
+                android:foregroundGravity="center"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtFoodIsVegLayout" />
+                app:layout_constraintTop_toBottomOf="@+id/txtFoodNameLayout">
 
 
-            <Button
-                android:id="@+id/btnEditFoodLayout"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/_40sdp"
-                android:layout_margin="@dimen/_10sdp"
-                android:background="@drawable/corner"
-                android:backgroundTint="@color/green"
-                android:drawableLeft="@drawable/ic_edit"
-                android:paddingLeft="@dimen/_20sdp"
-                android:text="EDIT"
-                android:textSize="@dimen/_14ssp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/view2"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/view" />
+                <TextView
+                    android:id="@+id/btnMinusQtyfood_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:gravity="top"
+                    android:text="-"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_30ssp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.5" />
 
-            <View
-                android:id="@+id/view2"
-                android:layout_width="@dimen/_3sdp"
-                android:layout_height="@dimen/_45sdp"
-                android:background="@color/black"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/btnEditFoodLayout"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/view"
-                app:layout_constraintVertical_bias="0.705" />
 
-            <Button
-                android:id="@+id/btnDeleteFoodLayout"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/_40sdp"
-                android:layout_margin="@dimen/_10sdp"
-                android:background="@drawable/corner"
-                android:backgroundTint="@color/red"
-                android:drawableLeft="@drawable/ic_delete"
-                android:paddingLeft="@dimen/_20sdp"
-                android:text="DELETE"
-                android:textSize="@dimen/_14ssp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/view2"
-                app:layout_constraintTop_toBottomOf="@+id/view" />
+                <EditText
+                    android:id="@+id/etFoodQtyFood_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:layout_marginBottom="@dimen/_3sdp"
+                    android:background="@drawable/corner"
+                    android:backgroundTint="@color/white"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:paddingLeft="@dimen/_8sdp"
+                    android:paddingRight="@dimen/_8sdp"
+                    android:text="0"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_20ssp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/btnPlushQtyfood_layout"
+                    app:layout_constraintStart_toEndOf="@+id/btnMinusQtyfood_layout"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.5" />
+
+                <TextView
+                    android:id="@+id/btnPlushQtyfood_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:text="+"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_30ssp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.5" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <CheckBox
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:background="@color/main_color"
+                android:text="Save"
+                android:textAlignment="center"
+                android:button="@drawable/is_checked_cb"
+                android:textSize="@dimen/_22ssp"
+                app:layout_constraintBottom_toBottomOf="parent" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

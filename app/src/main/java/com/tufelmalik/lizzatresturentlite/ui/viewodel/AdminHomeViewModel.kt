@@ -1,4 +1,4 @@
-package com.tufelmalik.lizzatresturentlite.ui.admin.viewmodels
+package com.tufelmalik.lizzatresturentlite.ui.viewodel
 
 import androidx.lifecycle.ViewModel
 import com.denzcoskun.imageslider.ImageSlider

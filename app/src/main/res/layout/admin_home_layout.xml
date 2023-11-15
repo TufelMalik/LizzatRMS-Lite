@@ -6,7 +6,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@drawable/corner_black_border"
-    android:backgroundTint="@color/gold"
+    android:backgroundTint="@color/main_color"
     android:layout_gravity="center_horizontal"
     android:layout_margin="@dimen/_10sdp"
     android:padding="@dimen/_5sdp">

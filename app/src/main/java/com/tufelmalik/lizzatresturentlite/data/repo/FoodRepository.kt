@@ -55,8 +55,9 @@ class FoodRepository(
             }
     }
 
+
     override fun saveFoodInFireStore(
-        uniqueKey : String,
+        uniqueKey: String,
         category: String,
         newImageUri: String,
         food: Food,
@@ -64,9 +65,10 @@ class FoodRepository(
     ) {
         food.foodImageUri = newImageUri
         food.foodId = uniqueKey
-        val collectionRef  = db.collection(Utilities.FirebaseFireStoreFood.ROOT_DIR)
-            .document(category).collection(uniqueKey)
-            .document("FoodData")
+        val collectionRef = db.collection(Utilities.FirebaseFireStoreFood.ROOT_DIR)
+            .document(category)
+            .collection("FoodData") // Assuming "FoodData" is the subcollection
+            .document(uniqueKey)
 
         collectionRef.set(food)
             .addOnSuccessListener {
@@ -77,12 +79,47 @@ class FoodRepository(
             }
     }
 
+    override suspend fun getFoodListByName(
+        foodName: String,
+        category: String,
+        result: (MyResult<List<Food>>) -> Unit
+    ) {
+        val collectionRef = db.collection(Utilities.FirebaseFireStoreFood.ROOT_DIR)
+            .document(category)
+            .collection("FoodData") // Assuming "FoodData" is the subcollection
+            .whereEqualTo("foodName", foodName)
 
-    override suspend fun getFoodList(category: String, result: (MyResult<List<Food>>) -> Unit) {
-        TODO("Not yet implemented")
+        collectionRef.get()
+            .addOnSuccessListener { querySnapshot ->
+                val foodList = querySnapshot.documents.map { it.toObject(Food::class.java) }
+                result.invoke(
+                    MyResult.Success(foodList.filterNotNull())
+                )
+            }
+            .addOnFailureListener { exception ->
+                result.invoke(MyResult.Error(exception.message))
+            }
     }
 
+    override suspend fun getFoodListByCategory(
+        category: String,
+        result: (MyResult<List<Food>>) -> Unit
+    ) {
+        val collectionRef = db.collection(Utilities.FirebaseFireStoreFood.ROOT_DIR)
+            .document(category)
+            .collection("FoodData")
 
+        collectionRef.get()
+            .addOnSuccessListener { querySnapshot ->
+                val foodList = querySnapshot.documents.map { it.toObject(Food::class.java) }
+                result.invoke(
+                    MyResult.Success(foodList.filterNotNull())
+                )
+            }
+            .addOnFailureListener { exception ->
+                result.invoke(MyResult.Error(exception.message))
+            }
+    }
 
 
     override suspend fun updateFoodData(

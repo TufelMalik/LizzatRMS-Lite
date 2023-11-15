@@ -7,17 +7,116 @@
     android:background="@color/white"
     tools:context=".ui.EditFoodActivity">
 
+   <HorizontalScrollView
+       android:id="@+id/scrollView2"
+       android:layout_width="match_parent"
+       android:layout_height="@dimen/_50sdp"
+       android:layout_margin="@dimen/_8sdp"
+       android:isScrollContainer="true"
+       android:orientation="vertical"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintHorizontal_bias="0.0"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toTopOf="parent">
+
+      <RadioGroup
+          android:id="@+id/tabGroup_nf"
+          android:layout_width="match_parent"
+          android:layout_height="@dimen/_40sdp"
+          android:layout_marginTop="@dimen/_8sdp"
+          android:layout_marginBottom="@dimen/_8sdp"
+          android:isScrollContainer="true"
+          android:orientation="horizontal"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.0"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/cardView">
+
+
+         <RadioButton
+             android:id="@+id/rbVegetarian"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_margin="@dimen/_3sdp"
+             android:background="@drawable/corner"
+             android:button="@drawable/unselected_tab_bg"
+             android:fontFamily="sans-serif-condensed-medium"
+             android:gravity="center"
+             android:minHeight="48dp"
+             android:padding="@dimen/_5sdp"
+             android:text="@string/vegetarian"
+             android:textColor="@color/black"
+             android:textSize="@dimen/_15ssp" />
+
+         <RadioButton
+             android:id="@+id/rbNone_vegetarian"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_margin="@dimen/_3sdp"
+             android:button="@drawable/unselected_tab_bg"
+             android:fontFamily="sans-serif-condensed-medium"
+             android:gravity="center"
+             android:padding="@dimen/_5sdp"
+             android:text="@string/none_vegetarian"
+             android:textColor="@color/black"
+             android:textSize="@dimen/_15ssp" />
+
+         <RadioButton
+             android:id="@+id/rbDesserts"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_margin="@dimen/_3sdp"
+             android:button="@drawable/unselected_tab_bg"
+             android:fontFamily="sans-serif-condensed-medium"
+             android:gravity="center"
+             android:padding="@dimen/_5sdp"
+             android:text="@string/desserts"
+             android:textColor="@color/black"
+             android:textSize="@dimen/_15ssp" />
+
+         <RadioButton
+             android:id="@+id/rbDrinks"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_margin="@dimen/_3sdp"
+             android:button="@drawable/unselected_tab_bg"
+             android:fontFamily="sans-serif-condensed-medium"
+             android:gravity="center"
+             android:padding="@dimen/_5sdp"
+             android:text="@string/drinks"
+             android:textColor="@color/black"
+             android:textSize="@dimen/_15ssp" />
+
+      </RadioGroup>
+   </HorizontalScrollView>
+
+
    <androidx.recyclerview.widget.RecyclerView
        android:id="@+id/editFoodRecyclerView"
        android:layout_width="match_parent"
+       android:layout_height="0dp"
        android:background="@color/white"
-       android:layout_height="match_parent"
+       android:layout_marginTop="@dimen/_10sdp"
        app:layout_constraintBottom_toBottomOf="parent"
        app:layout_constraintEnd_toEndOf="parent"
        app:layout_constraintHorizontal_bias="0.5"
        app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toBottomOf="@+id/scrollView2"
+       tools:listitem="@layout/edit_food_layout" />
+
+   <ProgressBar
+       android:id="@+id/editProgressBar"
+       style="?android:attr/progressBarStyle"
+       android:layout_width="wrap_content"
+       android:minWidth="@dimen/_50sdp"
+       android:visibility="gone"
+       android:layout_height="wrap_content"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintHorizontal_bias="0.5"
+       app:layout_constraintStart_toEndOf="@+id/editFoodRecyclerView"
+       app:layout_constraintStart_toStartOf="parent"
        app:layout_constraintTop_toTopOf="parent"
-       app:layout_constraintVertical_bias="0.5"
-       tools:listitem="@layout/food_layout" />
+       app:layout_constraintVertical_bias="0.5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

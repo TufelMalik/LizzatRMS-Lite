@@ -11,7 +11,7 @@ import com.denzcoskun.imageslider.ImageSlider
 import com.tufelmalik.lizzatresturentlite.R
 import com.tufelmalik.lizzatresturentlite.data.AdminHomeItem
 import com.tufelmalik.lizzatresturentlite.databinding.FragmentHomeBinding
-import com.tufelmalik.lizzatresturentlite.ui.admin.viewmodels.AdminHomeViewModel
+import com.tufelmalik.lizzatresturentlite.ui.viewodel.AdminHomeViewModel
 
 class HomeFragment : Fragment() {
     private val binding: FragmentHomeBinding by lazy {
