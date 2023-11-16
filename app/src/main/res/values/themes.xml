@@ -6,6 +6,12 @@
     </style>
 
     <style name="Theme.LizzatResturentLite" parent="Base.Theme.LizzatResturentLite" >
+        <item name="android:colorPrimary">@color/main_color</item>
+        <item name="fontFamily">@font/amarante</item>
+        <item name="android:colorPrimaryDark">@color/dark_main_color</item>
         <item name="android:statusBarColor">@color/main_color</item>
     </style>
+
+
+
 </resources>

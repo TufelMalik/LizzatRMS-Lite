@@ -1,8 +1,11 @@
 package com.tufelmalik.lizzatresturentlite.ui.viewodel
 
-import android.util.Log
+import android.content.Context
+import android.view.View
 import android.widget.RadioButton
 import android.widget.RadioGroup
+import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,9 +14,9 @@ import com.tufelmalik.lizzatresturentlite.R
 import com.tufelmalik.lizzatresturentlite.classes.MyResult
 import com.tufelmalik.lizzatresturentlite.data.Food
 import com.tufelmalik.lizzatresturentlite.data.repo.FoodRepository
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.newCoroutineContext
+import kotlin.coroutines.coroutineContext
 
 class FoodViewModel(private val repo: FoodRepository) : ViewModel() {
     //    -------------------------------------------
@@ -59,12 +62,10 @@ class FoodViewModel(private val repo: FoodRepository) : ViewModel() {
         _foodList.value = MyResult.Loading
         viewModelScope.launch {
             repo.getFoodListByCategory(category) { result ->
-                _foodList.value =result
+                _foodList.value = result
             }
         }
     }
-
-
 
 
     fun getFoodListByName(foodName: String, category: String) {
@@ -94,20 +95,27 @@ class FoodViewModel(private val repo: FoodRepository) : ViewModel() {
         }
     }
 
-    fun setSelectedCategory(categoryId: Int) {
-        _selectedCategory.value = categoryId
-    }
 
-    fun changeTabBg(selectedCategory: Int, tabGroupNf: RadioGroup) {
+//    fun setSelectedCategory(categoryId: Int) {
+//        _selectedCategory.value = categoryId
+//    }
+
+    fun changeTabBg(selectedCategory: Int, tabGroupNf: RadioGroup,context: Context) {
         for (i in 0 until tabGroupNf.childCount) {
-            val radioButton = tabGroupNf.getChildAt(i) as RadioButton
-            if (radioButton.id != selectedCategory) {
-                radioButton.setBackgroundResource(R.drawable.unselected_tab_bg)
-            } else {
-                radioButton.setBackgroundResource(R.drawable.selected_tab_bg)
+            val cardView = tabGroupNf.getChildAt(i) as? CardView
+            cardView?.let {
+                val radioButton = it.getChildAt(0) as? RadioButton
+                radioButton?.let {
+                    if (radioButton.id != selectedCategory) {
+                        radioButton.setBackgroundColor(ContextCompat.getColor(context, R.color.gold))
+                    } else {
+                        radioButton.setBackgroundColor(ContextCompat.getColor(context, R.color.gray))
+                    }
+                }
             }
         }
     }
+
 
 
 

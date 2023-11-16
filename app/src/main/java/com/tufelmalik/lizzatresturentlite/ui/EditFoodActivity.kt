@@ -38,26 +38,21 @@ class EditFoodActivity : AppCompatActivity() {
         setCategoryLayout()
     }
 
-    private fun setCategoryLayout() {
-        binding.tabGroupNf.setOnCheckedChangeListener { _, checkedId ->
-            val selectedRadioButton = findViewById<RadioButton>(checkedId)
-            category = selectedRadioButton.text.toString()
-            viewModel.changeTabBg(checkedId, binding.tabGroupNf)
-            callGetFood(category!!)
-        }
-    }
-
 
     private fun observer() {
         viewModel.selectedCategory.observe(this) { checkedId ->
             val selectedRadioButton = findViewById<RadioButton>(checkedId)
-            val category = selectedRadioButton.text.toString().lowercase()
-            callGetFood(category)
+            category = selectedRadioButton.text.toString()
+            Log.d(TAG,"Selected category : \n\n $category")
+            callGetFood(category!!)
         }
+
         viewModel.foodList.observe(this@EditFoodActivity) { state ->
             when (state) {
                 MyResult.Loading -> {
                     binding.editProgressBar.isVisible = true
+                    binding.editProgressBar.animate()
+
                 }
 
                 is MyResult.Success -> {
@@ -77,13 +72,24 @@ class EditFoodActivity : AppCompatActivity() {
         }
     }
 
+
+
+    private fun setCategoryLayout() {
+        binding.tabGroupNf.setOnCheckedChangeListener { _, checkedId ->
+            val selectedRadioButton = findViewById<RadioButton>(checkedId)
+            category = selectedRadioButton.text.toString()
+            viewModel.changeTabBg(checkedId, binding.tabGroupNf,this@EditFoodActivity)
+            callGetFood(category!!)
+        }
+    }
+
     private fun initViewModel() {
         val foodRepo = AppModule.provideFoodRepository(
             FirebaseModule.provideFireStore(),
             FirebaseModule.provideFirebaseStorage()
         )
         viewModel = ViewModelProvider(this, FoodVMFactory(foodRepo))[FoodViewModel::class.java]
-        viewModel.changeTabBg(binding.rbVegetarian.id, binding.tabGroupNf)
+        viewModel.changeTabBg(binding.rbVegetarian.id, binding.tabGroupNf,this@EditFoodActivity)
         callGetFood(Utilities.FirebaseFireStoreFood.VEG)
     }
 
@@ -94,11 +100,11 @@ class EditFoodActivity : AppCompatActivity() {
         }
     }
 
-    private fun callGetFood(category: String) {
-        if (category.isNullOrEmpty()) {
-            viewModel.getFoodListByCategory(Utilities.FirebaseFireStoreFood.VEG)
+    private fun callGetFood(newCategory :  String) {
+        if (newCategory.isEmpty()) {
+            viewModel.getFoodListByCategory(category.toString())
         } else {
-            viewModel.getFoodListByCategory(category)
+            viewModel.getFoodListByCategory(newCategory)
         }
     }
 }

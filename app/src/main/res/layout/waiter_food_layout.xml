@@ -32,22 +32,21 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.5">
 
-
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/imgFoodLayout"
-                android:layout_width="@dimen/_87sdp"
-                android:layout_height="@dimen/_87sdp"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_marginBottom="@dimen/_10sdp"
-                android:background="@drawable/ic_add_food"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_100sdp"
+                android:src="@drawable/ic_add_food"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="27dp"
+                app:layout_constraintCircleRadius="@dimen/_30sdp"
                 android:scaleType="centerCrop"
-                app:civ_border_color="#FF000000"
-                app:civ_border_width="2dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/constraintLayout"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.223" />
+
 
             <TextView
                 android:id="@+id/txtFoodNameLayout"

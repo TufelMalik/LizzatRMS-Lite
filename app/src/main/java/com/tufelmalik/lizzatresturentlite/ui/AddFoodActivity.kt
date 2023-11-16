@@ -10,7 +10,6 @@ import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.firestore.FirebaseFirestore
-import com.tufelmalik.lizzatresturentlite.R
 import com.tufelmalik.lizzatresturentlite.classes.AppModule
 import com.tufelmalik.lizzatresturentlite.classes.FirebaseModule
 import com.tufelmalik.lizzatresturentlite.classes.MyResult
@@ -30,11 +29,10 @@ class AddFoodActivity : AppCompatActivity() {
     private var foodName: String? = null
     private var foodPrice: String? = null
     private var foodCategory: String? = null
-    private var isVegetarian: Boolean? = false
     private var foodIngredients: String? = null
     private lateinit var viewModel: FoodViewModel
     private val foodCategories = arrayOf(
-        "Vegetarian", "Non vegetarian", "Desserts", "Drinks", "Specials"
+        "Select Category", "Vegetarian", "Non vegetarian", "Desserts", "Drinks"
     )
 
 
@@ -60,6 +58,7 @@ class AddFoodActivity : AppCompatActivity() {
                 ) {
                     foodCategory = parent?.getItemAtPosition(position).toString()
                 }
+
                 override fun onNothingSelected(parent: AdapterView<*>?) {
                 }
             }
@@ -71,22 +70,15 @@ class AddFoodActivity : AppCompatActivity() {
             startActivityForResult(intent, 1)
         }
 
-        binding.checkBoxIsVegetarian.setOnCheckedChangeListener { _, isChecked ->
-            isVegetarian = isChecked
-            if (isChecked) {
-                binding.checkBoxIsVegetarian.text = getString(R.string.vegetarian)
-            } else {
-                binding.checkBoxIsVegetarian.text = getString(R.string.none_vegetarian)
-            }
-        }
 
 
 
         observer()
         binding.buttonAddFood.setOnClickListener {
             if (validateInput()) {
-                val food = Food(foodId= "",foodName,foodPrice,foodCategory,foodImageUri.toString(),foodIngredients)
-                viewModel.saveFoodData(category = foodCategory.toString(),food= food)
+                val food =
+                    Food(foodId = "", foodName, foodPrice, foodCategory, foodImageUri.toString())
+                viewModel.saveFoodData(category = foodCategory.toString(), food = food)
             } else {
                 showToast(this@AddFoodActivity, "Food details are required!!")
             }
@@ -101,14 +93,17 @@ class AddFoodActivity : AppCompatActivity() {
                 is MyResult.Loading -> {
                     dialog.show()
                 }
+
                 is MyResult.Error -> {
                     dialog.dismiss()
                     showToast(this@AddFoodActivity, state.errorMsg.toString())
                 }
+
                 is MyResult.Success -> {
                     dialog.dismiss()
-                    showToast(this@AddFoodActivity,state.data.second)
+                    showToast(this@AddFoodActivity, state.data.second)
                 }
+
                 else -> {}
             }
         }
@@ -136,19 +131,28 @@ class AddFoodActivity : AppCompatActivity() {
         var isValid = true
 
         if (foodName.isNullOrBlank()) {
+            binding.editTextFoodName.error = "Required!!"
             isValid = false
         }
 
         if (foodPrice.isNullOrBlank()) {
+            binding.editTextFoodPrice.error = "Required!!"
             isValid = false
         }
 
         if (foodIngredients.isNullOrBlank()) {
+            binding.editTextFoodIngredients.error = "Required!!"
             isValid = false
         }
-        if(foodIngredients!!.isNotEmpty()){
+        if (foodIngredients!!.isEmpty()) {
+            binding.editTextFoodIngredients.error = "Required!!"
             foodIngredients = "\nIngredients not specified by Restaurant."
         }
+        if(foodCategory.equals("Select Category")){
+            showToast(this@AddFoodActivity,"Pleas select any category")
+            isValid = false
+        }
+
         return isValid
     }
 

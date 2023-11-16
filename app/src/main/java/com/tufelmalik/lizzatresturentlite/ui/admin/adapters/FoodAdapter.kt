@@ -24,8 +24,8 @@ class FoodAdapter(private val context: Context) : RecyclerView.Adapter<FoodAdapt
         RecyclerView.ViewHolder(binding.root) {
         fun bind(food: Food, position: Int) {
             binding.txtFoodNameLayout.text = food.foodName
-            binding.txtFoodIsVegLayout.text =
-                if (food.isVegetarian == true) "Vegetarian" else "Non-Vegetarian"
+            binding.txtFoodPriceLayout.text = "₹ "+ food.foodPrice
+
             Glide.with(context).load(food.foodImageUri)
                 .thumbnail(Glide.with(context).load(R.drawable.loading_gift))
                 .into(binding.imgFoodLayout)

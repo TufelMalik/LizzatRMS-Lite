@@ -1,9 +1,8 @@
 package com.tufelmalik.lizzatresturentlite.ui.waiter
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.tufelmalik.lizzatresturentlite.R
-import com.tufelmalik.lizzatresturentlite.databinding.ActivityCookBinding
 import com.tufelmalik.lizzatresturentlite.databinding.ActivityWaiterBinding
 
 class WaiterActivity : AppCompatActivity() {
@@ -12,7 +11,7 @@ class WaiterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_waiter)
-
+        key = intent.getStringExtra("key")
         supportActionBar?.hide()
 
     }

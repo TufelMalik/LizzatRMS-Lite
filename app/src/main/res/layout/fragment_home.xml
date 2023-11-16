@@ -34,6 +34,7 @@
         android:layout_marginTop="@dimen/_55sdp"
         android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:fillViewport="true"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/collapsingToolbarLayout">
@@ -70,16 +71,67 @@
 
             </androidx.cardview.widget.CardView>
 
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                android:fontFamily="@font/amarante"
+                android:text="Admin Panel"
+                android:textColor="@color/gold"
+                android:textSize="@dimen/_23ssp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@+id/card1"
+                tools:layout_editor_absoluteX="6dp" />
+
+            <View
+                android:id="@+id/view3"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_2sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@drawable/corner"
+                android:backgroundTint="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/admin_home_recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_17sdp"
                 android:foregroundGravity="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/card1"
+                app:layout_constraintTop_toBottomOf="@+id/view3"
                 tools:listitem="@layout/admin_home_layout" />
+
+
+            <TextView
+                android:id="@+id/textVtiew"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                android:fontFamily="@font/amarante"
+                android:text="Chat With"
+                android:textColor="@color/gold"
+                android:textSize="@dimen/_23ssp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@+id/admin_home_recyclerView"
+                tools:layout_editor_absoluteX="13dp" />
+
+            <View
+                android:id="@+id/view311"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_2sdp"
+                android:background="@drawable/corner"
+                android:backgroundTint="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textVtiew" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

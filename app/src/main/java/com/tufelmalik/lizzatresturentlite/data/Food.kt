@@ -6,6 +6,5 @@ data class Food(
     val foodPrice : String? = null,
     val foodCategory: String? = null,
     var foodImageUri : String? = null,
-    val foodIngredients : String? = null,
-    val isVegetarian : Boolean? = null
+    val foodIngredients : String? = null
 )

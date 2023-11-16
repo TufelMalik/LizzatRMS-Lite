@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <corners
-        android:radius="@dimen/_5sdp"
-        />
+    <!-- White background -->
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="#FFFFFF" /> <!-- White color for unchecked state -->
+            <size android:width="24dp" android:height="24dp" />
+        </shape>
+    </item>
 
+    <!-- Gold border -->
+    <item android:right="1dp" android:left="1dp" android:top="1dp" android:bottom="1dp">
+        <shape android:shape="oval">
+            <stroke android:color="#FFD700" android:width="2dp" /> <!-- Gold color for border -->
+            <size android:width="24dp" android:height="24dp" />
+        </shape>
+    </item>
 
-    <solid
-        android:color="@color/light_gray"
-        />
-</shape>
+</layer-list>

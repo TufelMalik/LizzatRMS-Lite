@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/multi_color1"
+    android:background="@drawable/multi_color_2"
     tools:context=".ui.AddFoodActivity">
 
     <ScrollView
@@ -33,10 +33,10 @@
 
             <ImageView
                 android:id="@+id/editTextFoodImageUri"
-                android:layout_width="@dimen/_100sdp"
-                android:layout_height="@dimen/_100sdp"
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_80sdp"
                 android:layout_gravity="center"
-                android:layout_marginTop="48dp"
+                android:layout_marginTop="@dimen/_50sdp"
                 android:layout_marginBottom="48dp"
                 android:background="@drawable/ic_add_food"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -62,13 +62,16 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:errorIconTint="@color/red"
+                app:boxStrokeErrorColor="@color/red"
                 android:layout_marginTop="@dimen/_10sdp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editTextFoodPrice"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Food Price" />
+                    android:inputType="number"
+                    android:hint="Food Price (in ₹)" />
             </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -76,6 +79,7 @@
                 android:id="@+id/spinnerFoodCategory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+
                 android:layout_marginTop="@dimen/_10sdp"
                 android:padding="@dimen/_12sdp" />
 
@@ -84,27 +88,18 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp">
+                android:layout_marginTop="@dimen/_10sdp"
+                android:foregroundTint="@color/white">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editTextFoodIngredients"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="top|start"
                     android:hint="Food Ingredients"
                     android:lines="5"
                     android:maxLines="15" />
             </com.google.android.material.textfield.TextInputLayout>
-
-            <!-- Is Vegetarian Checkbox -->
-            <CheckBox
-                android:id="@+id/checkBoxIsVegetarian"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_20sdp"
-                android:button="@drawable/is_checked_cb"
-                android:paddingLeft="@dimen/_10sdp"
-                android:text="None Vegetarian"
-                android:textSize="@dimen/_12ssp" />
 
 
             <!-- Add Button -->

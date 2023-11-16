@@ -101,6 +101,9 @@ dependencies {
     //Lootie Animation
     implementation("com.airbnb.android:lottie:3.4.0")
 
+    // CircleImageView
+    implementation("de.hdodenhof:circleimageview:3.1.0")
+
     // Navigation Component
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.5")
     implementation("androidx.navigation:navigation-ui-ktx:2.7.5")
