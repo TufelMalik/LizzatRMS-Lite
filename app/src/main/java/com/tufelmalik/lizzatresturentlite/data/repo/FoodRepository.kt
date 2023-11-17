@@ -7,6 +7,7 @@ import com.tufelmalik.lizzatresturentlite.classes.MyResult
 import com.tufelmalik.lizzatresturentlite.classes.Utilities
 import com.tufelmalik.lizzatresturentlite.data.Food
 import com.tufelmalik.lizzatresturentlite.data.repo.interfaces.FoodRepositoryInterface
+import kotlinx.coroutines.tasks.await
 import java.util.UUID
 
 class FoodRepository(
@@ -26,18 +27,27 @@ class FoodRepository(
         foodImageRef.putFile(Uri.parse(food.foodImageUri))
             .addOnSuccessListener {
                 foodImageRef.downloadUrl.addOnSuccessListener {
-                    val newImageUri =  it.toString()
-                    saveFoodInFireStore(uniqKey,category,newImageUri,food){state->
-                        when(state){
+                    val newImageUri = it.toString()
+                    saveFoodInFireStore(uniqKey, category, newImageUri, food) { state ->
+                        when (state) {
                             when (state) {
                                 is MyResult.Success -> {
-                                    result.invoke(MyResult.Success(Pair(food, "Data Inserted Successful..")))
+                                    result.invoke(
+                                        MyResult.Success(
+                                            Pair(
+                                                food,
+                                                "Data Inserted Successful.."
+                                            )
+                                        )
+                                    )
                                 }
 
                                 is MyResult.Error -> result.invoke(MyResult.Error(state.errorMsg))
 
                                 else -> MyResult.Loading
-                            } ->{}
+                            } -> {
+                            }
+
                             else -> {}
                         }
                     }
@@ -101,6 +111,8 @@ class FoodRepository(
             }
     }
 
+
+
     override suspend fun getFoodListByCategory(
         category: String,
         result: (MyResult<List<Food>>) -> Unit
@@ -119,24 +131,6 @@ class FoodRepository(
             .addOnFailureListener { exception ->
                 result.invoke(MyResult.Error(exception.message))
             }
-    }
-
-
-    override suspend fun updateFoodData(
-        foodId: String,
-        category: String,
-        food: Food,
-        result: (MyResult<Pair<Food, String>>) -> Unit
-    ) {
-        TODO("Not yet implemented")
-    }
-
-    override suspend fun deleteFoodData(
-        foodId: String,
-        category: String,
-        result: (MyResult<Pair<Food, String>>) -> Unit
-    ) {
-        TODO("Not yet implemented")
     }
 
 

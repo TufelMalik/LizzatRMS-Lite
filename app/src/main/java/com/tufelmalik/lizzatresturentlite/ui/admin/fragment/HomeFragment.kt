@@ -48,6 +48,7 @@ class HomeFragment : Fragment() {
     private fun setHomeRestaurantsRV() {
         val itemList = listOf(
             AdminHomeItem(R.drawable.ic_staff, "View Staff"),
+            AdminHomeItem(R.drawable.ic_add_food, "Add Food"),
             AdminHomeItem(R.drawable.ic_food_menu, "Food List"),
             AdminHomeItem(R.drawable.ic_total_sold, "Total Sell")
         )

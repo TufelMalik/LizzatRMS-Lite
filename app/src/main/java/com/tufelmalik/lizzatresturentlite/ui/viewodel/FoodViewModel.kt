@@ -77,23 +77,7 @@ class FoodViewModel(private val repo: FoodRepository) : ViewModel() {
         }
     }
 
-    fun updateFoodData(foodId: String, category: String, newFoodData: Food) {
-        _updateFoodList.value = MyResult.Loading
-        viewModelScope.launch {
-            repo.updateFoodData(foodId = foodId, category = category, food = newFoodData) {
-                _updateFoodList.value = MyResult.Success("Updating Successful...")
-            }
-        }
-    }
 
-    fun deleteFoodData(foodId: String, category: String) {
-        _deleteFoodList.value = MyResult.Loading
-        viewModelScope.launch {
-            repo.deleteFoodData(foodId, category) {
-                _deleteFoodList.value = MyResult.Success("Deleting Successful...")
-            }
-        }
-    }
 
 
 //    fun setSelectedCategory(categoryId: Int) {

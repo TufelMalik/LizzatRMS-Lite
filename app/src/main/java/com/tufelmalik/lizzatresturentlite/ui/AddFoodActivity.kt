@@ -32,7 +32,7 @@ class AddFoodActivity : AppCompatActivity() {
     private var foodIngredients: String? = null
     private lateinit var viewModel: FoodViewModel
     private val foodCategories = arrayOf(
-        "Select Category", "Vegetarian", "Non vegetarian", "Desserts", "Drinks"
+        "Select Category", "Vegetarian", "Non Vegetarian", "Desserts", "Drinks"
     )
 
 

@@ -79,7 +79,6 @@ class LoginActivity : AppCompatActivity() {
                 else -> {}
             }
         }
-
     }
 
     private fun observeUserList() {

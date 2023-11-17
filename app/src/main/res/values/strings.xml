@@ -9,7 +9,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="contact_to_developer">Contact to Developer</string>
-    <string name="none_vegetarian">None Vegetarian</string>
+    <string name="none_vegetarian">Non Vegetarian</string>
     <string name="vegetarian">Vegetarian</string>
     <string name="desserts">Desserts</string>
     <string name="drinks">Drinks</string>

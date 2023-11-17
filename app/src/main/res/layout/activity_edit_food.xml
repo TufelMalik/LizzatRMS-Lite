@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_3sdp"
             android:backgroundTint="#E1E0E0"
-            app:cardElevation="@dimen/_30sdp"
+            app:cardElevation="@dimen/_20sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -27,7 +27,7 @@
             <HorizontalScrollView
                 android:id="@+id/scrollView2"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_130sdp"
+                android:layout_height="@dimen/_125sdp"
                 android:layout_margin="@dimen/_3sdp"
                 android:isScrollContainer="true"
                 android:orientation="vertical"

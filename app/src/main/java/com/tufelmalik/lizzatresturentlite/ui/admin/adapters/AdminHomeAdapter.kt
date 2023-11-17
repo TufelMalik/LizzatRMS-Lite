@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.tufelmalik.lizzatresturentlite.classes.Utilities.showToast
 import com.tufelmalik.lizzatresturentlite.data.AdminHomeItem
 import com.tufelmalik.lizzatresturentlite.databinding.AdminHomeLayoutBinding
+import com.tufelmalik.lizzatresturentlite.ui.AddFoodActivity
 import com.tufelmalik.lizzatresturentlite.ui.EditFoodActivity
 import com.tufelmalik.lizzatresturentlite.ui.StaffActivity
 import com.tufelmalik.lizzatresturentlite.ui.admin.activity.ChatActivity
@@ -47,8 +48,9 @@ class AdminHomeAdapter(
             holder.itemView.setOnClickListener {
                 when (position) {
                     0 -> startActivityNow(StaffActivity(), "admin")
-                    1 -> startActivityNow(EditFoodActivity(), "admin")
-                    2 -> showToast(context, "on Next update..")
+                    1 -> startActivityNow(AddFoodActivity(), "admin")
+                    2 -> startActivityNow(EditFoodActivity(), "admin")
+                    3 -> showToast(context, "on Next update..")
                     else -> {}
                 }
             }

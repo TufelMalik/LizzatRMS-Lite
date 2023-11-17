@@ -2,9 +2,9 @@ package com.tufelmalik.lizzatresturentlite.data
 
 data class Food(
     var foodId : String? = null,
-    val foodName : String? = null,
-    val foodPrice : String? = null,
-    val foodCategory: String? = null,
+    var foodName : String? = null,
+    var foodPrice : String? = null,
+    var foodCategory: String? = null,
     var foodImageUri : String? = null,
-    val foodIngredients : String? = null
+    var foodIngredients : String? = null
 )
