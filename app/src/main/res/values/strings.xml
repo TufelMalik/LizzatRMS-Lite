@@ -14,5 +14,8 @@
     <string name="desserts">Desserts</string>
     <string name="drinks">Drinks</string>
     <string name="specials">Specials</string>
+    <string name="cashier">Cashier</string>
+    <string name="cook">Cook</string>
+    <string name="waiter">Waiter</string>
 
 </resources>

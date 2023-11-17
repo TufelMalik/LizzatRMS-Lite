@@ -23,7 +23,6 @@ class HomeFragment : Fragment() {
     private lateinit var imageSlider: ImageSlider
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -41,23 +40,42 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setBanner()
-        setHomeRecyclerView()
+        setHomeRestaurantsRV()
+        setHomeRole()
+        setHomeChat()
     }
 
-    private fun setHomeRecyclerView() {
+    private fun setHomeRestaurantsRV() {
         val itemList = listOf(
             AdminHomeItem(R.drawable.ic_staff, "View Staff"),
-            AdminHomeItem(R.drawable.ic_waiter, "Waiter"),
-            AdminHomeItem(R.drawable.ic_cook, "Cook"),
-            AdminHomeItem(R.drawable.ic_add_food, "Add Food"),
-            AdminHomeItem(R.drawable.ic_edit_food, "Edit Food"),
-            AdminHomeItem(R.drawable.ic_delete_food, "Delete Food"),
-
+            AdminHomeItem(R.drawable.ic_food_menu, "Food List"),
+            AdminHomeItem(R.drawable.ic_total_sold, "Total Sell")
+        )
+        val adapter = AdminHomeAdapter(itemList, requireContext(),"res")
+        binding.adminHomeRestaurantRecycler.layoutManager = GridLayoutManager(requireContext(),3)
+        binding.adminHomeRestaurantRecycler.adapter = adapter
+    }
+    private fun setHomeRole() {
+        val itemList = listOf(
+            AdminHomeItem(R.drawable.ic_waiter, "a Waiter"),
+            AdminHomeItem(R.drawable.ic_cook, "a Cook"),
+            AdminHomeItem(R.drawable.ic_cashier, "a Cashier")
         )
 
-        val adapter = AdminHomeAdapter(itemList, requireContext())
-        binding.adminHomeRecyclerView.layoutManager = GridLayoutManager(requireContext(),3)
-        binding.adminHomeRecyclerView.adapter = adapter
+        val adapter = AdminHomeAdapter(itemList, requireContext(),"role")
+        binding.adminHomeRoleRecycler.layoutManager = GridLayoutManager(requireContext(),3)
+        binding.adminHomeRoleRecycler.adapter = adapter
+    }
+    private fun setHomeChat() {
+        val itemList = listOf(
+            AdminHomeItem(R.drawable.ic_cook, getString(R.string.cook)),
+            AdminHomeItem(R.drawable.ic_waiter, getString(R.string.waiter)),
+            AdminHomeItem(R.drawable.ic_cashier, getString(R.string.cashier))
+        )
+
+        val adapter = AdminHomeAdapter(itemList, requireContext(),"chat")
+        binding.adminHomeChatStaffRecycler.layoutManager = GridLayoutManager(requireContext(),3)
+        binding.adminHomeChatStaffRecycler.adapter = adapter
     }
 
     private fun setBanner() {

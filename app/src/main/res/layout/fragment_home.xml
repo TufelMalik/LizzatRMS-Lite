@@ -30,18 +30,26 @@
     </com.google.android.material.appbar.CollapsingToolbarLayout>
 
     <ScrollView
+        android:id="@+id/scrollView3"
         android:layout_width="match_parent"
-        android:layout_marginTop="@dimen/_55sdp"
         android:layout_height="match_parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/_55sdp"
         android:fillViewport="true"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/collapsingToolbarLayout">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_400sdp">
+            android:layout_height="@dimen/_400sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.5">
 
 
             <androidx.cardview.widget.CardView
@@ -72,9 +80,11 @@
             </androidx.cardview.widget.CardView>
 
 
+            <!--        Admin panel side 1-->
+
             <TextView
                 android:id="@+id/textView"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_10sdp"
                 android:fontFamily="@font/amarante"
@@ -82,8 +92,18 @@
                 android:textColor="@color/gold"
                 android:textSize="@dimen/_23ssp"
                 android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@+id/card1"
-                tools:layout_editor_absoluteX="6dp" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/card1" />
+
+            <ImageView
+                android:layout_width="@dimen/_27sdp"
+                android:layout_height="@dimen/_27sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:background="@drawable/ic_resturent"
+                app:layout_constraintBottom_toTopOf="@+id/admin_home_restaurant_recycler"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/card1" />
+
 
             <View
                 android:id="@+id/view3"
@@ -98,29 +118,42 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView" />
 
 
+            <!--        Role as a stafff by admin  2-->
+
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/admin_home_recyclerView"
+                android:id="@+id/admin_home_restaurant_recycler"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:foregroundGravity="center"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/view3"
                 tools:listitem="@layout/admin_home_layout" />
 
-
             <TextView
                 android:id="@+id/textVtiew"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_10sdp"
+                android:layout_marginTop="4dp"
                 android:fontFamily="@font/amarante"
-                android:text="Chat With"
+                android:text="Role as"
                 android:textColor="@color/gold"
                 android:textSize="@dimen/_23ssp"
                 android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@+id/admin_home_recyclerView"
-                tools:layout_editor_absoluteX="13dp" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/admin_home_restaurant_recycler" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:background="@drawable/ic_change_role"
+                app:layout_constraintBottom_toTopOf="@+id/admin_home_role_recycler"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/admin_home_restaurant_recycler" />
 
             <View
                 android:id="@+id/view311"
@@ -133,8 +166,66 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textVtiew" />
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/admin_home_role_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:foregroundGravity="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view311"
+                tools:listitem="@layout/admin_home_layout" />
+
+
+            <!--    chat with staff members-->
+
+            <TextView
+                android:id="@+id/chat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                android:fontFamily="@font/amarante"
+                android:text="Chat with"
+                android:textColor="@color/gold"
+                android:textSize="@dimen/_23ssp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/admin_home_role_recycler" />
+
+            <ImageView
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:background="@drawable/ic_chat"
+                app:layout_constraintBottom_toTopOf="@+id/admin_home_chat_staff_recycler"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/admin_home_role_recycler" />
+
+            <View
+                android:id="@+id/roleView"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_2sdp"
+                android:background="@drawable/corner"
+                android:backgroundTint="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/chat" />
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/admin_home_chat_staff_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:foregroundGravity="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/chat"
+                tools:listitem="@layout/admin_home_layout" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+
     </ScrollView>
 
 

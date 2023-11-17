@@ -24,7 +24,7 @@ class EditFoodActivity : AppCompatActivity() {
     private var category: String? = null
     private lateinit var viewModel: FoodViewModel
     private var key: String? = null
-    private val foodAdapter = FoodAdapter(this@EditFoodActivity)
+    private val foodAdapter = FoodAdapter(this@EditFoodActivity,"edit")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
