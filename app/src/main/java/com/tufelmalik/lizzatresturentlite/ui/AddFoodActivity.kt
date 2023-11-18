@@ -152,7 +152,6 @@ class AddFoodActivity : AppCompatActivity() {
             showToast(this@AddFoodActivity,"Pleas select any category")
             isValid = false
         }
-
         return isValid
     }
 

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/waiterHomeFragment_nav"
+        android:title="Home"
+        android:icon="@drawable/ic_home"
+        />
+    <item
+        android:id="@+id/waiterTrackerFragment_nav"
+        android:title="Orders"
+        android:icon="@drawable/ic_food"
+        />
+    <item
+        android:id="@+id/profileFragment_nav"
+        android:title="Profile"
+        android:icon="@drawable/ic_person_vector"
+        />
+
+
+</menu>

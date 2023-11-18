@@ -32,6 +32,7 @@ class EditFoodActivity : AppCompatActivity() {
         supportActionBar!!.hide()
         key = intent.getStringExtra("key")
 
+        binding.editProgressBar.isVisible = false
         initViewModel()
         initAdapter()
         observer()

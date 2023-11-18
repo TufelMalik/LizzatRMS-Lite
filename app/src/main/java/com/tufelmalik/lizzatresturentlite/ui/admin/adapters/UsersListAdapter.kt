@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -18,17 +19,22 @@ import com.tufelmalik.lizzatresturentlite.databinding.UserLayoutBinding
 
 class UsersListAdapter(private val context: Context) :
     RecyclerView.Adapter<UsersListAdapter.UserViewHolder>() {
+
     private var userList: List<Users> = emptyList()
 
-    fun updateUserList(newList: List<Users>) {
+    fun updateStaffList(newList : List<Users>){
         userList = newList
+        notifyDataSetChanged()
     }
+
+
 
     inner class UserViewHolder(var binding: UserLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(users: Users) {
             binding.txtPersonNameStaffLayout.text = users.userName
             binding.txxRoleLayoutStaffLay.text = users.userRole
+            Log.d("Tufel","User name : \n\n ${users.userName}")
             Glide.with(context).load(users.profileUrl)
                 .thumbnail(Glide.with(context).load(R.drawable.loading_gift))
                 .into(binding.imgPersonLayout)
@@ -45,6 +51,7 @@ class UsersListAdapter(private val context: Context) :
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
         val users = userList[position]
         holder.bind(users)
+        Log.d("Tufel","\\\\\\\\ \n $users")
         holder.itemView.setOnClickListener {
             showUserDetailsDialog(userList[position])
         }

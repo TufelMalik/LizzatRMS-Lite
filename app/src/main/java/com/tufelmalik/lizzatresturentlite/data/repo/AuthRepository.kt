@@ -102,7 +102,7 @@ class AuthRepository @Inject constructor(
         val storageRef = storage.reference.child("UsersProfileImages")
         val imgRef = storageRef.child(user.userId.toString())
         val uploadTask = imgRef.putFile(Uri.parse(user.profileUrl))
-
+        user.joiningDate =  System.currentTimeMillis().toString()
         uploadTask.addOnSuccessListener {
             imgRef.downloadUrl.addOnSuccessListener {
                 user.profileUrl = it.toString()
@@ -134,6 +134,9 @@ class AuthRepository @Inject constructor(
         val databaseRef =  db.reference.child(Utilities.FirebaseData.USER)
         databaseRef.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
+                result.invoke(
+                    MyResult.Loading
+                )
                 val userList = arrayListOf<Users>()
                 for(data in snapshot.children){
                     val users = data.getValue(Users::class.java)

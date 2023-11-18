@@ -45,4 +45,5 @@
     <color name="progressBarBackground">#E0E0E0</color>
     <color name="progressBarColor">#4CAF50</color>
     <color name="light_gray">#5E999999</color>
+    <color name="light_green">#42D567</color>
 </resources>

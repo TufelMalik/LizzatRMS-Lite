@@ -123,13 +123,13 @@ class FoodAdapter(private val context: Context, private val str: String) :
             }
         }
         binding.btnEditButtonFoodLayout.setOnClickListener {
-            var db = FirebaseFirestore.getInstance()
+            val db = FirebaseFirestore.getInstance()
             food.foodName = binding.txtFoodNameDialog.text.toString()
             food.foodPrice = binding.txtFoodPriceDialog.text.toString()
             food.foodIngredients = binding.txtFoodIngredientsDialog.text.toString()
             val collectionRef = db.collection(Utilities.FirebaseFireStoreFood.ROOT_DIR)
                 .document(food.foodCategory.toString())
-                .collection("FoodData") // Assuming "FoodData" is the subcollection
+                .collection("FoodData")
                 .document(food.foodId.toString())
 
             collectionRef.set(food)

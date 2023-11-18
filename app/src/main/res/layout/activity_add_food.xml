@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/multi_color_2"
+    android:background="@drawable/multi_color2"
     tools:context=".ui.AddFoodActivity">
 
     <ScrollView

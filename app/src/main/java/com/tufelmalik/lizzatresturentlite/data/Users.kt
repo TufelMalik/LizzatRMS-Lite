@@ -10,5 +10,5 @@ data class Users(
     var profileUrl : String? = null,
     val userRole : String? = null,
     val userGender : String? = null,
-    val joiningDate : String? = System.currentTimeMillis().toString()
+    var joiningDate : String? = null
     )
